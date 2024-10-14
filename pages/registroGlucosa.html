@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Periódico para nivel de glucosa en sangre</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+
+    <h1>Registro Periódico para nivel de glucosa en sangre</h1>
+    <div class="glucometro">
+        <img class="pinchazo" src="../assets/images/glucometria.png" alt="imagen de glucometría">
+    </div>
+    <div class="fecha">
+        <label for="fechaRegistro">Fecha de ingreso del registro:</label>
+        <span id="fechaRegistro"></span>
+        <p>Tu Registro se guardará con la fecha actual, independientemente del día de la semana que elijas.</p>
+        <p>Lo ideal es ingresar todas las mediciones tomadas en la jornada anterior y hacerlo diariamente por lo menos durante 7 días.</p>
+        <p>De esta forma tendrás un informe completo con los valores actualizados para llevar a tu cita con el médico especialista.</p>
+    </div>
+
+    <h2>Día de la semana:</h2>
+    
+    <select id="diaSeleccionado" onchange="mostrarFormulario(this.value)">
+        <option value="">Selecciona un día</option>
+        <option value="Lunes">Lunes</option>
+        <option value="Martes">Martes</option>
+        <option value="Miércoles">Miércoles</option>
+        <option value="Jueves">Jueves</option>
+        <option value="Viernes">Viernes</option>
+        <option value="Sábado">Sábado</option>
+        <option value="Domingo">Domingo</option>
+    </select>
+
+    <div id="formularios"></div>
+
+    <button type="button" onclick="guardarDatos()">Guardar Registro</button>
+    <button onclick="redirigir()">Volver al inicio</button>
+    <span id="info"></span>
+    <p id="registroDiario"></p>
+    <script src="../javascript/scriptRegistro.js"></script>
+</body>
+</html>

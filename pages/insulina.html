@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Insulina</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <h1>Calculadora de Insulina</h1>
+    <h2>¡Bienvenido! Gracias por utilizar esta página que brinda utilidad para los pacientes con Diabetes tipo 1</h2>
+    <p>
+        Valores de referencia normales para la glucosa en sangre:
+        <ul>
+            <li>Preprandial (en ayunas o previo a las ingestas): 80-130 mg/dL.</li>
+            <li>Postprandial (1 o 2 horas después de comenzar a comer): Menos de 180 mg/dL.</li>
+        </ul>
+        Es importante mantener estos valores para una buena salud.
+    </p>
+
+    <h3>Introduce las lecturas de glucosa en sangre para cada período del día: <span class="aviso"></span></h3>
+    <label for="glucosaAyunas">Glucosa en Ayunas</label>
+    <label for="glucosaPreColacion">Glucosa Pre-colación</label>
+    <label for="glucosaPostAlmuerzo">Glucosa Post-almuerzo</label>
+    <label for="glucosaMerienda">Glucosa Merienda</label><br>
+    <input type="number" id="glucosaAyunas" placeholder="valor de 20 a 300 (mg/dL)">
+    
+    <input type="number" id="glucosaPreColacion" placeholder="valor de 20 a 300 (mg/dL)">
+    
+    <input type="number" id="glucosaPostAlmuerzo" placeholder="valor de 20 a 300 (mg/dL)">
+    
+    <input type="number" id="glucosaMerienda" placeholder="valor de 20 a 300 (mg/dL)">
+    
+    <button onclick="calcularInsulina()">Calcular Insulina</button>
+    <button id="reiniciar" onclick="reiniciarFormulario()">Nuevo cálculo</button>
+    <button onclick="redirigir()">Volver al inicio</button>
+    <div class="advertencia"></div>
+    <div id="resultado"></div>
+    <h4>Consejos útiles:</h4>
+    <p>Haga ejercicio por lo menos 30 minutos al día, 5 días a la semana.<br> Además, haga ejercicios para fortalecer los músculos 2 o más días a la semana.<br>
+        Pruebe caminar rápido, nadar o bailar. Escoja una actividad que disfrute.<br> Siempre consulte con el médico antes de empezar un nuevo programa de ejercicio.<br>
+        Siga su plan de comidas. Cada comida es una oportunidad para tomar una buena decisión para controlar su diabetes.<br>
+        Tome los medicamentos de la manera como su proveedor de atención médica lo recomiende.</p>
+    <script src="../javascript/scriptInsulina.js"></script>
+</body>
+</html>

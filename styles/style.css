@@ -1,0 +1,122 @@
+body {
+    height: 100vh;
+    font-family: "Noto Sans regular";
+    margin: 20px;
+    background-color: aquamarine;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+h1, h2 {
+    text-align: center;
+}
+.aviso {
+    color: red;
+    font-size: .8rem;
+    background-color: white;
+}
+.advertencia {
+    margin-top: 15px;
+    color: yellow;
+    font-size: 1rem;
+    text-align: center;
+    background-color:blue;
+}
+.navegador {
+    display:flex;
+    justify-content: space-around;
+}
+#medidorInsulina, #registroPeriodico {
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin-top: 100PX;
+    margin-bottom: 50px;
+    width: fit-content;
+}
+.glucometro {
+    display: flex;
+    justify-content: center;
+}
+.pinchazo {
+    height: 150px;
+    width: 80pz;
+}
+input, select {
+    margin: 5px 0;
+    padding: 5px;
+    background-color: khaki;
+    font-size: 15px;
+    color: darkblue;
+}
+label {
+    display: inline-block;
+    text-align: center;
+    width: 206px;
+    margin-top: 10px;
+}
+.fecha label {
+    width: 100%;
+    text-align: start;
+    display: block;
+}
+.fecha span{
+    width: 200px;
+    font-weight: bolder;
+}
+button, a {
+    font-family: "Noto Sans regular";
+    margin-top: 20px;
+    padding: 7px;
+    border-radius: 10px;
+    font-weight: bolder;
+    color: darkred;
+}
+#resultado {
+    margin-top: 20px;
+    font-weight: bold;
+}
+#resultado ul li {
+    padding: 10px;
+}
+table, td, th {
+    border: 2px solid;
+    border-collapse: collapse;
+    padding: 6px;
+    text-align: center;
+    background-color: khaki;
+}
+.formulario-dia {
+    display: flex;
+    flex-direction: column;
+}
+.formulario-dia label {
+    width: 100%;
+    text-align: start;
+}
+.formulario-dia input {
+    width: 190px;
+}
+.imagenes {
+    display: flex;
+    height: 50%;
+    width: 100%;
+}
+.imagen1,.imagen2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 50%;
+}
+.imagen1 img, .imagen2 img {
+    height: 90%;
+    width: 80%;
+}
+#info {
+    font-size: 1.2rem;
+    font-weight: bolder;
+    color: red;
+    transition: opacity 0.5s;
+}
+#registroDiario {
+    font-size: 1rem;
+}
