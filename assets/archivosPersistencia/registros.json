@@ -1,0 +1,132 @@
+[
+    {
+        "fechaIngreso": "Lunes 2 de Septiembre de 2024 - 16:51",
+        "diaRegistrado": "Lunes",
+        "niveles": [
+            119,
+            128,
+            139,
+            145,
+            122,
+            111,
+            99
+        ]
+    },
+    {
+        "fechaIngreso": "Martes 3 de Septiembre de 2024 - 16:51",
+        "diaRegistrado": "Martes",
+        "niveles": [
+            99,
+            108,
+            129,
+            165,
+            142,
+            143,
+            97
+        ]
+    },
+    {
+        "fechaIngreso": "Miércoles 4 de Septiembre de 2024 - 16:51",
+        "diaRegistrado": "Miércoles",
+        "niveles": [
+            151,
+            165,
+            162,
+            132,
+            140,
+            132,
+            123
+        ]
+    },
+    {
+        "fechaIngreso": "Jueves 5 de Septiembre de 2024 - 16:51",
+        "diaRegistrado": "Jueves",
+        "niveles": [
+            125,
+            128,
+            130,
+            129,
+            134,
+            132,
+            100
+        ]
+    },
+    {
+        "fechaIngreso": "Viernes 6 de Septiembre de 2024 - 16:54",
+        "diaRegistrado": "Viernes",
+        "niveles": [
+            97,
+            126,
+            120,
+            154,
+            135,
+            170,
+            114
+        ]
+    },
+    {
+        "fechaIngreso": "Sábado 7 de Septiembre de 2024 - 16:55",
+        "diaRegistrado": "Sábado",
+        "niveles": [
+            112,
+            134,
+            132,
+            167,
+            136,
+            156,
+            136
+        ]
+    },
+    {
+        "fechaIngreso": "Domingo 8 de Septiembre de 2024 - 16:55",
+        "diaRegistrado": "Domingo",
+        "niveles": [
+            108,
+            143,
+            130,
+            167,
+            132,
+            149,
+            121
+        ]
+    },
+    {
+        "fechaIngreso": "Lunes 9 de Septiembre de 2024 - 16:58",
+        "diaRegistrado": "Lunes",
+        "niveles": [
+            98,
+            129,
+            114,
+            138,
+            123,
+            145,
+            119
+        ]
+    },
+    {
+        "fechaIngreso": "Martes 10 de Septiembre de 2024 - 16:59",
+        "diaRegistrado": "Martes",
+        "niveles": [
+            102,
+            136,
+            121,
+            167,
+            132,
+            156,
+            126
+        ]
+    },
+    {
+        "fechaIngreso": "Miércoles 11 de Septiembre de 2024 - 16:59",
+        "diaRegistrado": "Miércoles",
+        "niveles": [
+            108,
+            165,
+            140,
+            156,
+            139,
+            154,
+            130
+        ]
+    }
+]
