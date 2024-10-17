@@ -9,18 +9,6 @@ body {
 h1, h2 {
     text-align: center;
 }
-.aviso {
-    color: red;
-    font-size: .8rem;
-    background-color: white;
-}
-.advertencia {
-    margin-top: 15px;
-    color: yellow;
-    font-size: 1rem;
-    text-align: center;
-    background-color:blue;
-}
 .navegador {
     display:flex;
     justify-content: space-around;
@@ -32,11 +20,11 @@ h1, h2 {
     margin-bottom: 50px;
     width: fit-content;
 }
-.glucometro {
+.glucometro, .plumaInsulina {
     display: flex;
     justify-content: center;
 }
-.pinchazo {
+.pinchazo, .pluma {
     height: 150px;
     width: 80pz;
 }
@@ -110,12 +98,6 @@ table, td, th {
 .imagen1 img, .imagen2 img {
     height: 90%;
     width: 80%;
-}
-#info {
-    font-size: 1.2rem;
-    font-weight: bolder;
-    color: red;
-    transition: opacity 0.5s;
 }
 #registroDiario {
     font-size: 1rem;
