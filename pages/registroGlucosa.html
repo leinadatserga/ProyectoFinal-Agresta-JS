@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro Periódico para nivel de glucosa en sangre</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;0,400;1,100..900;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
@@ -35,10 +40,15 @@
 
     <div id="formularios"></div>
 
-    <button type="button" onclick="guardarDatos()">Guardar Registro</button>
-    <button onclick="redirigir()">Volver al inicio</button>
-    <span id="info"></span>
+    <button id="guardarRegistro" type="button" onclick="guardarDatos()">Guardar Registro</button>
+    <button id="inicio" type="button" onclick="redirigir()">Volver al inicio</button>
+    <button id="enviarRegistros" type="button" onclick="enviarRegistros()">Enviar Registros por E-mail</button>
+    <button id="cargarRegistros" type="button" onclick="cargarRegistrosJSON()">Cargar últimos Registros enviados</button>
     <p id="registroDiario"></p>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="../javascript/scriptGenerarAvisos.js"></script>
     <script src="../javascript/scriptRegistro.js"></script>
+    <script src="../javascript/scriptCargarRegistrosJSON.js"></script>
+    <script src="../javascript/scriptMail.js"></script>
 </body>
 </html>
