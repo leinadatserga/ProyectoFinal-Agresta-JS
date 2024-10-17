@@ -1,6 +1,8 @@
 /* - - - Registro - - - */
 
 let registros = JSON.parse(localStorage.getItem("registros")) || [];
+let registrosFetch;
+let fuenteDeLosDatos;
 const etiquetas = [
     "Antes del desayuno", 
     "Después del desayuno", 
@@ -10,43 +12,22 @@ const etiquetas = [
     "Después de la cena", 
     "Antes de ir a dormir"
 ];
-console.log(registros);
 
-registros.length == 0 ?  document.getElementById("registroDiario").innerText = "> > > > > > No hay registros que mostrar " : mostrarRegistros();
-function infoContenido(contenido) {
-    const info = document.getElementById("info");
-    info.innerText = contenido;
-    destellar(info);
-}
-
-function destellar(contenido) {
-    let intervalo;
-    let visible = true;
-    intervalo = setInterval(() => {
-        contenido.style.opacity = visible ? '0' : '1';
-        visible = !visible;
-    }, 500);
-    setTimeout(() => {
-        clearInterval(intervalo);
-        contenido.style.opacity = '1';
-        contenido.innerText = "";
-    }, 10000);
-}
+const enviarRegistrosButton = document.getElementById("enviarRegistros");
+!registros[0] ? enviarRegistrosButton.disabled = true : enviarRegistrosButton.disabled = false;
+registros.length == 0 ?  notificacion("info", "> > > > > > No hay registros que mostrar ") : mostrarRegistros();
 
 function guardarRegistroLS(nuevoRegistro) {
-    const registrosGuardados = JSON.parse(localStorage.getItem("registros")) || [];
-    const registrosActualizados = [...registrosGuardados, nuevoRegistro];
-    registros = registrosActualizados;
-    localStorage.setItem("registros", JSON.stringify(registrosActualizados));
-  }
+    registros.push(nuevoRegistro);
+    localStorage.setItem("registros", JSON.stringify(registros));
+};
 
 function guardarDatos() {
     const fecha = document.getElementById("fechaRegistro").innerText;    
     const diaSeleccionado = document.getElementById("diaSeleccionado").value;
-    const mili = new Date().getTime();    
 
     if (!fecha || !diaSeleccionado) {
-        infoContenido("< < < < < Por favor, selecciona un día de la semana para tu registro.");
+        notificacion("info", "< < < < < Por favor, selecciona un día de la semana para tu registro.");
         return;
     }
 
@@ -59,14 +40,16 @@ function guardarDatos() {
         .map(input => parseFloat(input.value) || null);    
     const registroJSON = { fechaIngreso: fecha, diaRegistrado: diaSeleccionado, niveles };
     guardarRegistroLS(registroJSON);
-    infoContenido("¡ ¡ ¡ ¡ ¡ ¡ REGISTROS GUARDADOS EXITOSAMENTE ! ! ! ! ! !.");
+    mensaje("success", "¡ ¡ ¡ ¡ ¡ ¡ REGISTROS GUARDADOS EXITOSAMENTE ! ! ! ! ! !.");
     hacerOtroRegistro();
     mostrarRegistros();
-}
+    enviarRegistrosButton.disabled = false;
+};
 
 function mostrarRegistros() {
     const registroDiario = document.getElementById("registroDiario");
     registroDiario.innerHTML = "";
+    document.getElementById("guardarRegistro").disabled = false;
     const tabla = document.createElement("table");
     const encabezados = ["Fecha Ingreso", "Día Registrado", etiquetas[0], etiquetas[1], etiquetas[2], etiquetas[3], etiquetas[4], etiquetas[5], etiquetas[6]];
     const filaEncabezados = document.createElement("tr");
@@ -74,7 +57,7 @@ function mostrarRegistros() {
         const th = document.createElement("th");
         th.innerText = encabezado;
         filaEncabezados.appendChild(th);
-    });
+    })
     tabla.appendChild(filaEncabezados);
     registros.forEach(registro => {
         const fila = document.createElement("tr");
@@ -92,21 +75,26 @@ function mostrarRegistros() {
             const nivel = registro.niveles[index] !== undefined ? `${registro.niveles[index]} mg/dL` : "N/A";
             tdNivel.innerText = nivel;
             fila.appendChild(tdNivel);
-        });
+        })
 
         tabla.appendChild(fila);
-    });
+    })
     registroDiario.appendChild(tabla);
-}
+    fuenteDeLosDatos = "ls";
+};
 
 function hacerOtroRegistro() {
     document.getElementById("formularios").innerHTML = "";
-}
+};
 
 function mostrarFormulario(dia) {
-    document.getElementById("info").innerText = "";
+    hacerOtroRegistro();
+    mostrarRegistros();
     const formulariosDiv = document.getElementById("formularios");
-    formulariosDiv.innerHTML = "";
+    const cargarRegistrosButton = document.getElementById("cargarRegistros");
+    cargarRegistrosButton.disabled = true;
+    const enviarRegistrosButton = document.getElementById("enviarRegistros");
+    enviarRegistrosButton.disabled = true;
 
     if (dia) {
         formulariosDiv.style.display = "block";
@@ -130,32 +118,33 @@ function mostrarFormulario(dia) {
             input.min = 20;
             input.max = 300;
             input.required = true;
-            input.addEventListener("focus", () => infoContenido(""));
             label.appendChild(input);
             formulario.appendChild(label);
-        });
+        })
 
         formulariosDiv.appendChild(formulario);
     } else {
         formulariosDiv.style.display = "none";
     }
-}
+};
 
 function validarFormulario(formulario) {
     const inputs = formulario.querySelectorAll(".glucose");
     for (const input of inputs) {
         const valor = parseFloat(input.value);
         if (isNaN(valor) || valor < 20 || valor > 300) {
-            infoContenido(`< < < < < < El valor "${input.id}", debe ser numérico y estar entre 20 y 300 (mg/dL).`);
+            notificacion("error", `< < < < < < El valor "${input.id}", debe ser numérico y estar entre 20 y 300 (mg/dL).`);
             return false;
         }
     }
     return true;
-}
+};
 
 function redirigir() {
+    const guardarRegistrosButton = document.getElementById("guardarRegistro");
+    guardarRegistrosButton.disabled = false;
     window.location.href = "../index.html";
-}
+};
 
 function formatearFecha(fecha) {
     const dias = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
@@ -169,14 +158,29 @@ function formatearFecha(fecha) {
     const año = fecha.getFullYear();
     const hora = fecha.getHours();
     return `${diaSemana} ${dia} de ${mes} de ${año} - ${hora}:${minutos}`;
-}
+};
 
 function mostrarFecha() {
     const fechaActual = new Date();
     let fechaFormateada =  formatearFecha(fechaActual);
     const fechaRegistro = document.getElementById("fechaRegistro") || "";
     fechaRegistro.textContent = fechaFormateada;
-}
+};
+
+function enviarRegistros() {
+    let registrosParaEnviar;
+
+    if (fuenteDeLosDatos === "json") {
+        registrosParaEnviar = registrosFetch;
+    } else if (fuenteDeLosDatos === "ls") {
+        registrosParaEnviar = JSON.parse(localStorage.getItem("registros")) || [];
+    }
+    if (registrosParaEnviar && registrosParaEnviar.length > 0) {
+        enviarRegistrosPorEmail(registrosParaEnviar);
+    } else {
+        notificacion("error", "No hay registros para enviar.");
+    }
+};
 
 window.onload = mostrarFecha;
 
