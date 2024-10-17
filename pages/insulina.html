@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Insulina</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;0,400;1,100..900;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
     <h1>Calculadora de Insulina</h1>
+    <div class="plumaInsulina">
+        <img class="pluma" src="../assets/images/pluma-insulina.png" alt="imagen de pluma insulina">
+    </div>
     <h2>¡Bienvenido! Gracias por utilizar esta página que brinda utilidad para los pacientes con Diabetes tipo 1</h2>
     <p>
         Valores de referencia normales para la glucosa en sangre:
@@ -18,7 +26,7 @@
         Es importante mantener estos valores para una buena salud.
     </p>
 
-    <h3>Introduce las lecturas de glucosa en sangre para cada período del día: <span class="aviso"></span></h3>
+    <h3>Introduce las lecturas de glucosa en sangre para cada período del día: </h3>
     <label for="glucosaAyunas">Glucosa en Ayunas</label>
     <label for="glucosaPreColacion">Glucosa Pre-colación</label>
     <label for="glucosaPostAlmuerzo">Glucosa Post-almuerzo</label>
@@ -34,13 +42,27 @@
     <button onclick="calcularInsulina()">Calcular Insulina</button>
     <button id="reiniciar" onclick="reiniciarFormulario()">Nuevo cálculo</button>
     <button onclick="redirigir()">Volver al inicio</button>
-    <div class="advertencia"></div>
+    <button id="guardarDatos" onclick="guardarDatos()" disabled>Guardar Datos</button>
     <div id="resultado"></div>
     <h4>Consejos útiles:</h4>
-    <p>Haga ejercicio por lo menos 30 minutos al día, 5 días a la semana.<br> Además, haga ejercicios para fortalecer los músculos 2 o más días a la semana.<br>
-        Pruebe caminar rápido, nadar o bailar. Escoja una actividad que disfrute.<br> Siempre consulte con el médico antes de empezar un nuevo programa de ejercicio.<br>
-        Siga su plan de comidas. Cada comida es una oportunidad para tomar una buena decisión para controlar su diabetes.<br>
+    <p>Haga ejercicio por lo menos 30 minutos al día, 5 días a la semana. Además, haga ejercicios para fortalecer los músculos 2 o más días a la semana.<br>
+        Pruebe caminar rápido, nadar o bailar. Escoja una actividad que disfrute. Siempre consulte con el médico antes de empezar un nuevo programa de ejercicio.<br>
+        Siga su plan de comidas. Cada comida es una oportunidad para tomar una buena decisión para controlar su diabetes.
         Tome los medicamentos de la manera como su proveedor de atención médica lo recomiende.</p>
+    <table id="tablaResultados" border="1">
+        <thead>
+            <tr>
+                <th>Día</th>
+                <th>Período</th>
+                <th>Glucosa (mg/dL)</th>
+                <th>Insulina Necesaria (unidades)</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="../javascript/scriptGenerarAvisos.js"></script>
     <script src="../javascript/scriptInsulina.js"></script>
 </body>
 </html>
